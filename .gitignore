@@ -1,0 +1,33 @@
+# Carpeta de build (CMake genera esto)
+build/
+build-debug/
+build-release/
+
+# Ejecutables Linux (sin extensión)
+bin/
+
+# Ejecutables Windows (por si acaso)
+*.exe
+
+# Archivos objeto y librerías
+*.o
+*.a
+*.so
+*.out
+
+# Archivos de CMake internos
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing/
+
+# VS Code
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

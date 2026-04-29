@@ -1,0 +1,43 @@
+Al ejecutar los siguientes codigos:
+bash '
+g++ -std=c++17 -O0 -g -Wall -Wextra -pedantic stl_optimizacion_demostracion.cpp -o stl_demo_O0
+g++ -std=c++17 -Og -g -Wall -Wextra -pedantic stl_optimizacion_demostracion.cpp -o stl_demo_Og
+g++ -std=c++17 -O1 -DNDEBUG stl_optimizacion_demostracion.cpp -o stl_demo_O1
+g++ -std=c++17 -O2 -DNDEBUG stl_optimizacion_demostracion.cpp -o stl_demo_O2
+g++ -std=c++17 -O3 -DNDEBUG stl_optimizacion_demostracion.cpp -o stl_demo_O3
+g++ -std=c++17 -Os -DNDEBUG stl_optimizacion_demostracion.cpp -o stl_demo_Os
+'
+O0 Sin optimizacion,tarda bastante en ejecutar a comparacion del resto. genera un archivo muy pesado
+mientras que Os es el más ligero.
+Al ejecutar -O2 el compilador inlinea mucho y el debbuger se puede confundir, por lo que es
+mejor usar el debug con -O0(-g)
+No me apareció o note un warning.
+#2
+1)
+Sort completo y tomar mediana   2611.30(us)
+nth_element para mediana        390.20(us)
+Comentario: nth_element suele comportarse en O(n) promedio; sort requiere O(n log n)
+en este caso sort demora más que nth_element. Sort ordena todo el arreglo mientras que nth_element
+solo ordena hasta el k_esimo
+2) En top-K partial_sort top K demora menos que nth_element + sort solo top K mientras que 
+sort completo demora mucho más que ambos, mucho.
+3) busqueda lineal puede variar su tiempo, pero en general es menos eficiente que binary_Search
+o lower_bound pues busqueda lineal va elemento por elemento en el vector, cuando es más eficiente
+con binary_search o lower_bound en un vector ordenado.
+En la ejecución:
+Busqueda lineal             158723.40(us)
+binary_search/ lower_bound  626.60(us)
+Nota: binary_search y lower_bound se deben usar en arreglos ordenados.
+4)
+push back coloca un elemento adicional al final del vector.
+con reserve y sin reserve significa que el vector es un bloque fijo o es dinamico(crece)
+respectivamente, lo que más rapido o lento, pues con reserve reservas un bloque fijo y no hay copias
+mientras que sin reserve hay copias constantes y eliminas el antiguo bloque por lo que es más lento
+Sin embargo, con reserve puede desperdiciar memoria ram si no sabes el tamaño estimado
+mientras que sin reserve vas duplicando el espacio, lo cual tambien es un riesgo puesto que puedes duplicar
+el tamaño y solo necesitar uno más.
+Nota: Ambos son de orden big-O(pues depende de el numero de valores a insertar O(n)) pero sin reserve
+es mucho más lento porque si se llena el vector debes reservar uno de mayor tamaño y copiar los valores
+eso hace que la "constante oculta" sea mayor:
+tiempo = Cxn (tardas una cantidad constante y insertas n numeros) pero reservar, copiar y eliminar, sin reserve,
+aumenta esa C(constante oculta)
