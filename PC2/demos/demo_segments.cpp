@@ -1,16 +1,37 @@
 #include "segments_removal.h"
+#include <iostream>
+#include <vector>
+#include <list>
+
+// Demo auxiliar. Nos muestra como se comprime el arreglo en segmentos
+void mostrar_segmentos(const std::vector<int>& arr) {
+    std::cout << "Arreglo original: ";
+    for (int x : arr) std::cout << x << " ";
+    std::cout << "\n";
+
+    std::cout << "Segmentos comprimidos:\n";
+    int id = 0;
+    for (int i = 0; i < (int)arr.size(); ) {
+        int j = i;
+        while (j < (int)arr.size() && arr[j] == arr[i]) ++j;
+        std::cout << "  id=" << id++
+                  << " value=" << arr[i]
+                  << " length=" << (j - i) << "\n";
+        i = j;
+    }
+    std::cout << "\n";
+}
 
 int main() {
-    // Casos del enunciado
-    casos = {
+    std::vector<std::vector<int>> casos = {
         {13, 13, 7, 7, 7, 2, 2, 2},
         {4, 4, 4, 100, 100, 2, 2},
-        {10, 10, 50, 10, 50, 50}
+        {2, 2, 5, 5, 5, 2, 2, 2}  
     };
 
-    // Caso interactivo
-    std::cout << "Ingresa n: ";
-    int n; std::cin >> n;
+    for (auto& arr : casos) {
+        mostrar_segmentos(arr);
+    }
 
     return 0;
 }
