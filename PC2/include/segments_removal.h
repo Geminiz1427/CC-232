@@ -1,10 +1,12 @@
 #pragma once
 
 #include <vector>
+#include <list>              
+#include <queue>              
+#include <unordered_map>       
 
 namespace pc2 {
 
-// Representa un segmento de elementos iguales consecutivos.
 struct Segment {
     int value;
     int length;
