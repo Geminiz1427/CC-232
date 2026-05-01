@@ -28,7 +28,7 @@ int segments_removal(const std::vector<int>& arr) {
     }
     // Prioridad al mayor length, mismo length entonces menor id gana (más a la izquierda)
     using Entry = std::pair<int, int>;
-
+    
     auto cmp = [](Entry a, Entry b) {
         if (a.first != b.first) return a.first < b.first;
         return a.second > b.second;
@@ -74,7 +74,6 @@ int segments_removal(const std::vector<int>& arr) {
     }   
 
     return ops;
-    return 0; 
 }
 
 } // namespace pc2

@@ -3,7 +3,6 @@
 #include <vector>
 #include <list>
 
-// Demo auxiliar. Nos muestra como se comprime el arreglo en segmentos
 void mostrar_segmentos(const std::vector<int>& arr) {
     std::cout << "Arreglo original: ";
     for (int x : arr) std::cout << x << " ";
@@ -26,11 +25,12 @@ int main() {
     std::vector<std::vector<int>> casos = {
         {13, 13, 7, 7, 7, 2, 2, 2},
         {4, 4, 4, 100, 100, 2, 2},
-        {2, 2, 5, 5, 5, 2, 2, 2}  
+        {2, 2, 5, 5, 5, 2, 2, 2}
     };
 
     for (auto& arr : casos) {
         mostrar_segmentos(arr);
+        std::cout << "Operaciones: " << pc2::segments_removal(arr) << "\n\n";
     }
 
     return 0;
