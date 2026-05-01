@@ -91,6 +91,9 @@ cmake --build build
 ### Historial de commits
 El historial de commits puede verse en el video y en el repositorio.
 
+### Nota 
+Este trabajo se encuentra incompleto y no cumple con los requisitos minimos. Aún asi realizo la presentación del repositorio para cumplir con la entrega.
+
 ### Declaración de autoría
 Declaro que entiendo el código entregado, que puedo explicarlo,
 compilarlo, ejecutarlo y modificarlo sin ayuda externa durante la grabación.
